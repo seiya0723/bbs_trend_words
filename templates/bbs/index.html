@@ -1,0 +1,29 @@
+{% extends "bbs/base.html" %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block main %}
+
+<a style="font-size:2rem;" href="{% url 'bbs:trend' %}">トレンド</a>
+
+<form>
+    <input class="" type="text" name="search" placeholder="検索ワード" value="{{ request.GET.search }}">
+    <input class="btn btn-primary" type="submit" value="検索">
+</form>
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea class="form-control" name="comment"></textarea>
+    <input type="submit" value="送信">
+</form>
+
+{% for topic in topics %}
+<div class="border p-1">
+    <div style="font-size:1.1rem;padding:0.5rem;">{{ topic.comment }}</div>
+    <div style="font-size:0.9rem;font-weight:bold;">{{ topic.dt }}</div>
+</div>
+{% endfor %}
+{% endblock %}
+
+

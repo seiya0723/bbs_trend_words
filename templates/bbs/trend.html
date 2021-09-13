@@ -1,0 +1,15 @@
+{% extends "bbs/base.html" %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block main %}
+
+<h2 style="text-shadow:2px 2px 2px gray;">トレンドワード</h2>
+
+{% for trend in trends %}
+<a class="" style="font-size:2rem;" href="{% url 'bbs:index' %}?search={{ trend.word }}" >{{ trend.word }}</a>
+{% endfor %}
+
+{% endblock %}
+
